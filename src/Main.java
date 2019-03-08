@@ -1,0 +1,28 @@
+
+import Window.Frame;
+import Window.MenuBar;
+
+import javax.swing.*;
+
+
+
+
+public class Main {
+
+    private Frame frame;
+    public MenuBar menuBar;
+
+    public static void main(String[] args) {
+        new Main();
+    }
+
+    public Main() {
+        menuBar = new MenuBar();
+        frame = new Frame(960, 840, menuBar);
+
+
+
+    }
+
+
+}

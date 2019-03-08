@@ -1,8 +1,12 @@
-package Window;
+package window;
+
+import screens.ComposerPanel;
+import screens.NotePanel;
+import screens.TrainingPanel;
+import screens.UserPanel;
 
 import javax.swing.*;
 import java.awt.*;
-import Window.MenuBar;
 
 public class Frame extends JFrame {
 
@@ -27,13 +31,12 @@ public class Frame extends JFrame {
         setFrameProperties();
 
         createMainPanel();
-        createUserPanel();
-        createComposerPanel();
-        createTrainingPanel();
-        createNotePanel();
+        createUserPanel(dim);
+        createComposerPanel(dim);
+        createTrainingPanel(dim);
+        createNotePanel(dim);
 
         cl = (CardLayout) (mainPanel.getLayout());
-
 
         add(mainPanel);
         pack();
@@ -56,49 +59,36 @@ public class Frame extends JFrame {
         mainPanel.setBackground(Color.red);
     }
 
-    private void createUserPanel() {
-        userPanel = new JPanel();
-        userPanel.setSize(dim);
-        userPanel.setBackground(Color.ORANGE);
-        mainPanel.add(userPanel);
+    private void createUserPanel(Dimension dim) {
+        userPanel = new UserPanel(dim);
+        mainPanel.add(userPanel, USERPANEL);
     }
-    private void createComposerPanel() {
-        composerPanel = new JPanel();
-        composerPanel.setSize(dim);
-        composerPanel.setBackground(Color.yellow);
-        mainPanel.add(composerPanel);
+    private void createComposerPanel(Dimension dim) {
+        composerPanel = new ComposerPanel(dim);
+        mainPanel.add(composerPanel, COMPOSERPANEL);
 
     }
-    private void createTrainingPanel() {
-        trainingPanel = new JPanel();
-        trainingPanel.setSize(dim);
-        trainingPanel.setBackground(Color.CYAN);
-        mainPanel.add(trainingPanel);
+    private void createTrainingPanel(Dimension dim) {
+        trainingPanel = new TrainingPanel(dim);
+        mainPanel.add(trainingPanel, TRAININGPANEL);
 
     }
-
-    private void createNotePanel() {
-        notePanel = new JPanel();
-        notePanel.setSize(dim);
-        notePanel.setBackground(Color.pink);
-        mainPanel.add(notePanel);
-
+    private void createNotePanel(Dimension dim) {
+        notePanel = new NotePanel(dim);
+        mainPanel.add(notePanel, NOTEPANEL);
     }
 
 
     public JPanel getMainPanel() {
         return mainPanel;
     }
-
     public void setMainPanel(JPanel mainPanel) {
         this.mainPanel = mainPanel;
     }
 
-
     public JPanel getUserPanel() {
         return userPanel;
     }
-
     public void setUserPanel(JPanel userPanel) {
         this.userPanel = userPanel;
     }
@@ -106,7 +96,6 @@ public class Frame extends JFrame {
     public JPanel getComposerPanel() {
         return composerPanel;
     }
-
     public void setComposerPanel(JPanel composerPanel) {
         this.composerPanel = composerPanel;
     }
@@ -114,7 +103,6 @@ public class Frame extends JFrame {
     public JPanel getTrainingPanel() {
         return trainingPanel;
     }
-
     public void setTrainingPanel(JPanel trainingPanel) {
         this.trainingPanel = trainingPanel;
     }
@@ -122,7 +110,6 @@ public class Frame extends JFrame {
     public JPanel getNotePanel() {
         return notePanel;
     }
-
     public void setNotePanel(JPanel notePanel) {
         this.notePanel = notePanel;
     }
@@ -130,7 +117,6 @@ public class Frame extends JFrame {
     public CardLayout getCl() {
         return cl;
     }
-
     public void setCl(CardLayout cl) {
         this.cl = cl;
     }

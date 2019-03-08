@@ -1,10 +1,6 @@
 
-import Window.Frame;
-import Window.MenuBar;
-
-import javax.swing.*;
-
-
+import window.Frame;
+import window.MenuBar;
 
 
 public class Main {
@@ -19,6 +15,7 @@ public class Main {
     public Main() {
         menuBar = new MenuBar();
         frame = new Frame(960, 840, menuBar);
+        menuBar.addFrame(frame);
 
 
 

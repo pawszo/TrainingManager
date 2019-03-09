@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54fbbf10-bf1d-4141-ac34-1d2d5bc4918e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TrainingManager/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TrainingManager/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TrainingManager/Window/Frame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TrainingManager/Window/MenuBar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Window/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/window/Frame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Window/MenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/window/MenuBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TrainingManager/screens/UserPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TrainingManager/screens/UserPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/UserPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/UserPanel.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,7 +17,7 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/Main.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="270">
@@ -37,7 +32,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/window/MenuBar.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="438">
+                <state relative-caret-position="798">
                   <caret line="86" column="41" selection-start-line="86" selection-start-column="41" selection-end-line="86" selection-end-column="41" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -65,15 +60,70 @@
               </provider>
             </entry>
           </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/usr/Logon.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="558">
+                  <caret line="77" column="88" selection-start-line="77" selection-start-column="88" selection-end-line="77" selection-end-column="88" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/usr/User.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="495">
+                  <caret line="33" column="1" lean-forward="true" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
+                  <folding>
+                    <element signature="e#127#128#0" expanded="true" />
+                    <element signature="e#158#159#0" expanded="true" />
+                    <element signature="e#206#207#0" expanded="true" />
+                    <element signature="e#246#247#0" expanded="true" />
+                    <element signature="e#281#282#0" expanded="true" />
+                    <element signature="e#312#313#0" expanded="true" />
+                    <element signature="e#360#361#0" expanded="true" />
+                    <element signature="e#400#401#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
         </leaf>
       </split-first>
       <split-second>
         <leaf>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/screens/UserPanel.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="345">
-                  <caret line="23" column="21" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
+                <state relative-caret-position="378">
+                  <caret line="96" column="24" lean-forward="true" selection-start-line="96" selection-start-column="24" selection-end-line="96" selection-end-column="24" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#1912#1913#0" expanded="true" />
+                    <element signature="e#1940#1941#0" expanded="true" />
+                    <element signature="e#1983#1984#0" expanded="true" />
+                    <element signature="e#2017#2018#0" expanded="true" />
+                    <element signature="e#2055#2056#0" expanded="true" />
+                    <element signature="e#2088#2089#0" expanded="true" />
+                    <element signature="e#2141#2142#0" expanded="true" />
+                    <element signature="e#2185#2186#0" expanded="true" />
+                    <element signature="e#2214#2215#0" expanded="true" />
+                    <element signature="e#2241#2242#0" expanded="true" />
+                    <element signature="e#2279#2280#0" expanded="true" />
+                    <element signature="e#2311#2312#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/usr/CreateUser.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="810">
+                  <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -142,10 +192,15 @@
         <option value="$PROJECT_DIR$/src/Window/Frame.java" />
         <option value="$PROJECT_DIR$/src/screens/userPanel.java" />
         <option value="$PROJECT_DIR$/src/screens/ComposerPanel.java" />
-        <option value="$PROJECT_DIR$/src/screens/UserPanel.java" />
         <option value="$PROJECT_DIR$/src/screens/TrainingPanel.java" />
         <option value="$PROJECT_DIR$/src/screens/NotePanel.java" />
         <option value="$PROJECT_DIR$/src/window/Frame.java" />
+        <option value="$PROJECT_DIR$/src/usr/logon.java" />
+        <option value="$PROJECT_DIR$/src/screens/CreateUser.java" />
+        <option value="$PROJECT_DIR$/src/usr/CreateUser.java" />
+        <option value="$PROJECT_DIR$/src/screens/UserPanel.java" />
+        <option value="$PROJECT_DIR$/src/usr/User.java" />
+        <option value="$PROJECT_DIR$/src/usr/Logon.java" />
       </list>
     </option>
   </component>
@@ -187,6 +242,18 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="screens" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="TrainingManager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TrainingManager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="usr" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TrainingManager" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TrainingManager" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="window" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -195,7 +262,13 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552068281046" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552144345504" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="usr" />
+      <recent name="screens" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -254,7 +327,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32983193" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39915967" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -289,9 +362,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/window/MenuBar.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
+        <state relative-caret-position="798">
           <caret line="86" column="41" selection-start-line="86" selection-start-column="41" selection-end-line="86" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -300,6 +383,9 @@
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/screens/CreateUser.java">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/window/Frame.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -312,16 +398,6 @@
             <element signature="method#createComposerPanel#0;class#Frame#0" />
             <element signature="method#createTrainingPanel#0;class#Frame#0" />
             <element signature="method#createNotePanel#0;class#Frame#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -348,8 +424,57 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/screens/UserPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="21" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
+        <state relative-caret-position="378">
+          <caret line="96" column="24" lean-forward="true" selection-start-line="96" selection-start-column="24" selection-end-line="96" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1912#1913#0" expanded="true" />
+            <element signature="e#1940#1941#0" expanded="true" />
+            <element signature="e#1983#1984#0" expanded="true" />
+            <element signature="e#2017#2018#0" expanded="true" />
+            <element signature="e#2055#2056#0" expanded="true" />
+            <element signature="e#2088#2089#0" expanded="true" />
+            <element signature="e#2141#2142#0" expanded="true" />
+            <element signature="e#2185#2186#0" expanded="true" />
+            <element signature="e#2214#2215#0" expanded="true" />
+            <element signature="e#2241#2242#0" expanded="true" />
+            <element signature="e#2279#2280#0" expanded="true" />
+            <element signature="e#2311#2312#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/usr/CreateUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/usr/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="1" lean-forward="true" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
+          <folding>
+            <element signature="e#127#128#0" expanded="true" />
+            <element signature="e#158#159#0" expanded="true" />
+            <element signature="e#206#207#0" expanded="true" />
+            <element signature="e#246#247#0" expanded="true" />
+            <element signature="e#281#282#0" expanded="true" />
+            <element signature="e#312#313#0" expanded="true" />
+            <element signature="e#360#361#0" expanded="true" />
+            <element signature="e#400#401#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/usr/Logon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="77" column="88" selection-start-line="77" selection-start-column="88" selection-end-line="77" selection-end-column="88" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

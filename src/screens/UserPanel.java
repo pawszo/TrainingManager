@@ -21,6 +21,7 @@ public class UserPanel extends JPanel implements ActionListener {
 
     private JDialog logon;
     private JDialog createUser;
+    private JDialog lostPassword;
 
     public UserPanel(Dimension dim){
         setSize(dim);
@@ -89,11 +90,16 @@ public class UserPanel extends JPanel implements ActionListener {
     public JDialog getCreateUser() {
         return createUser;
     }
-
     public void setCreateUser(JDialog createUser) {
         this.createUser = createUser;
     }
 
+    public void setLostPassword(JDialog lostPassword) {
+        this.lostPassword = lostPassword;
+    }
+    public JDialog getLostPassword() {
+        return lostPassword;
+    }
     public User getUser() {
         return user;
     }

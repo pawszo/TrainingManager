@@ -6,36 +6,44 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class CreateUser extends JDialog implements ActionListener {
 
     private User user;
-    private String password;
-    private JTextField userNameField;
-    private JPasswordField pwField;
-    private JLabel userNameLabel, pwLabel;
+    private String password, email;
+    private JTextField userNameField, emailField;
+    private JPasswordField pwField, pwField2;
+    private JLabel userNameLabel, pwLabel, pwLabel2, emailLabel;
     private UserPanel userPanel;
-    private JButton submit, registered;
+    private JButton submit, registered, ok;
+
+    private JComponent[] fields;
 
     public CreateUser(UserPanel userPanel) {
         this.userPanel = userPanel;
         setLayout(new FlowLayout());
-        setSize(new Dimension(380, 200));
-        setLocationRelativeTo(userPanel);
-        setBackground(Color.blue);
+        setSize(new Dimension(380, 300));
+        emailLabel = new JLabel("EMAIL");
+        emailField = new JTextField(30);     setLocationRelativeTo(userPanel);
         setAlwaysOnTop(true);
         setResizable(false);
-        userNameLabel = new JLabel("NEW USERNAME: ");
-        userNameLabel.setVisible(true);
-
+        userNameLabel = new JLabel("USERNAME: ");
         userNameField = new JTextField(30);
-        pwLabel = new JLabel("NEW PASSWORD: ");
-        pwLabel.setBounds(20, 20, 100, 30);
+        pwLabel = new JLabel("PASSWORD: ");
         pwField = new JPasswordField(30);
+        pwLabel2 = new JLabel("CONFIRM PASSWORD: ");
+        pwField2 = new JPasswordField(30);
+        emailLabel = new JLabel("EMAIL");
+        emailField = new JTextField(30);
         submit = new JButton("CREATE USER");
         submit.addActionListener(this);
         registered = new JButton("ALREADY REGISTERED?");
         registered.addActionListener(this);
+        ok = new JButton("OK");
+        ok.addActionListener(this);
+
+        fields = new JComponent[] {userNameLabel, userNameField, pwLabel, pwField, pwLabel2, pwField2, emailLabel, emailField};
 
         start();
         setVisible(true);
@@ -44,14 +52,15 @@ public class CreateUser extends JDialog implements ActionListener {
 
     private void start() {
         user = new User();
-        user.setUserName("username123");
-        user.setPassword("password1");
-        add(userNameLabel);
-        add(userNameField);
-        add(pwLabel);
-        add(pwField);
+        user.setUserName("username123"); //temporary
+        user.setPassword("password1");  //temporary
+
+        for(JComponent f:fields) {
+            add(f);
+        }
         add(submit);
         add(registered);
+        add(ok).setVisible(false);
 
     }
 
@@ -59,15 +68,23 @@ public class CreateUser extends JDialog implements ActionListener {
     public void actionPerformed(ActionEvent actionEvent) {
 
         if(actionEvent.getSource() == submit) {
-            System.out.println("Validating credentials...");
-            if(userNameField.getText().equals(user.getUserName()) &&
-                    pwField.getText().equals(user.getPassword())) {
-                System.out.println("Login successfull");
+            System.out.println("Checking...");
+            if(userNameField.getText().equals("") || pwField.getText().equals("") || emailField.getText().equals("")) {
+                System.out.println("You need to enter fill in all fields");
+            } else if (pwField.getText().equals(pwField2.getText())) {
+                System.out.println("NEW ACCOUNT CREATED");
+                for(JComponent f:fields) {
+                    f.setEnabled(false);
+                }
+                ok.setVisible(true);
+
             }
-            else {            }
         }
         if(actionEvent.getSource() == registered) {
             userPanel.setLogon(new Logon(userPanel));
+            this.setVisible(false);
+        }
+        if(actionEvent.getSource() == ok) {
             this.setVisible(false);
         }
     }

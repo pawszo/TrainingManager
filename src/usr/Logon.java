@@ -32,12 +32,9 @@ public class Logon extends JDialog implements ActionListener {
         setLayout(new FlowLayout());
         setSize(new Dimension(380, 200));
         setLocationRelativeTo(userPanel);
-        setBackground(Color.blue);
         setAlwaysOnTop(true);
         setResizable(false);
         userNameLabel = new JLabel("USERNAME: ");
-        userNameLabel.setVisible(true);
-
         userNameField = new JTextField(30);
         pwLabel = new JLabel("PASSWORD: ");
         pwLabel.setBounds(20, 20, 100, 30);
@@ -45,6 +42,7 @@ public class Logon extends JDialog implements ActionListener {
         submit = new JButton("Submit");
         submit.addActionListener(this);
         lostPw = new JButton("Lost password?");
+        lostPw.addActionListener(this);
         info = new JLabel("Enter your username and password to continue.");
 
         start();
@@ -88,6 +86,10 @@ public class Logon extends JDialog implements ActionListener {
             }
         //    System.out.println(userNameField.getText());
         //    System.out.println(pwField.getText());
+        }
+        if(actionEvent.getSource() == lostPw) {
+            userPanel.setLostPassword(new LostPassword(userPanel));
+            this.setVisible(false);
         }
     }
 }

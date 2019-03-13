@@ -18,14 +18,11 @@ public class Exercise {
         this.currExc = currExc;
         this.composerPanel = composerPanel;
         this.currExcKey = composerPanel.excMap.indexOf(currExc);
-        System.out.println(currExcKey);
         create();
     }
 
 
-    /**
-     * dont use capital letters in muscle names
-     */
+
     public void create() {
 
                 switch (currExcKey) {
@@ -218,9 +215,19 @@ public class Exercise {
                         secMuscles = new String[]{composerPanel.muscleMap.get(7)};
                         break;
                 }
+                if(secMuscles == null) {
+                    secMuscles = new String[] {""};
+                }
 
         }
 
 
+    public int getCurrExcKey() {
+        return currExcKey;
     }
+
+    public String getCurrExc() {
+        return currExc;
+    }
+}
 

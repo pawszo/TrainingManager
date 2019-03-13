@@ -3,6 +3,8 @@ package window;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 public class MenuBar extends JMenuBar implements ActionListener {
 
@@ -87,4 +89,5 @@ public class MenuBar extends JMenuBar implements ActionListener {
             System.out.println("NOTEPANEL");
         }
     }
+
 }

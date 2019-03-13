@@ -15,6 +15,7 @@ public class Main {
     public Main() {
         menuBar = new MenuBar();
         frame = new Frame(960, 840, menuBar);
+        frame.setTitle("TRAINING MANAGER");
         menuBar.addFrame(frame);
 
 

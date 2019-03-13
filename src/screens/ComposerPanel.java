@@ -1,44 +1,120 @@
 package screens;
 
+import exercise.DetailPanel;
 import exercise.Exercise;
+import exercise.TrainingList;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 /**
  * Panel where you compose a traning plan from
  */
-public class ComposerPanel extends JPanel implements ActionListener {
+public class ComposerPanel extends JPanel implements ActionListener, FocusListener {
 
     private JComboBox bodypartBox, excBox;
+    private JTextField weight, repetitions;
     private int[] ABSexc, ARMexc, BACKexc, SHOULDERexc, LEGexc, BUTTOCKexc, HIPexc, CHESTexc, currMuscle;
     private String[] bodyparts, currBodypartString;
     private String currExc;
     private Exercise currExcDet;
     public LinkedHashMap<Integer, String> muscleMap;
     public ArrayList<String> excMap;
+    private JPanel detailPanel1, detailPanel2, detailPanel3, detailPanel4;
 
+    private JTextArea textField1;
+    private JTextArea textField2;
+    private JButton addToList, removeFromList, save;
+    private JList trainingList;
+    private DefaultListModel listmodel;
 
     public ComposerPanel(Dimension dim) {
         setSize(dim);
         setBackground(Color.yellow);
+        setLayout(new GridLayout(2, 2));
         createMuscleMap();
         createExcMap();
         createMuscleArr();
+        createTextFields();
+        createButtons();
+        createCBoxes();
+        createTrainingList();
+        createDetailPanels();
+
+        addComponentsToPanels();
+    }
+    private void createTrainingList() {
+        trainingList = new TrainingList();
+        trainingList.setVisibleRowCount(5);
+        trainingList.setLayoutOrientation((int) JList.LEFT_ALIGNMENT);
+        listmodel = new DefaultListModel();
+    }
+    private void createCBoxes() {
         bodyparts = new String[] {"Choose muscle group","abs","arms","shoulders","back","legs","buttocks","hips","chest"};
         currBodypartString = new String[] {"Choose exercise"};
         bodypartBox = new JComboBox(bodyparts);
         excBox = new JComboBox((String[]) (currBodypartString));
         bodypartBox.addActionListener(this);
         excBox.addActionListener(this);
-        add(bodypartBox);
-        add(excBox);
+    }
+    private void createButtons() {
+        addToList = new JButton("Add to your list");
+        addToList.addActionListener(this);
+        removeFromList = new JButton("Remove from your list");
+        removeFromList.addActionListener(this);
+        save = new JButton("SAVE PLAN FOR PRINTOUT");
+        save.addActionListener(this);
+    }
 
-
+    private void addComponentsToPanels() {
+        detailPanel3.add(trainingList);
+        detailPanel2.add(textField1);
+        detailPanel2.add(textField2);
+        add(detailPanel1);
+        add(detailPanel2);
+        add(detailPanel3);
+        add(detailPanel4);
+    }
+    private void createTextFields() {
+        weight = new JTextField(10);
+        weight.setText("Weight in KGs");
+        weight.setToolTipText("Enter weight in KGs here");
+        weight.addFocusListener(this);
+        repetitions = new JTextField(10);
+        repetitions.setText("Enter total number of repetitions here");
+        repetitions.setToolTipText("Enter total number of repetitions here");
+        repetitions.addFocusListener(this);
+        textField1 = new JTextArea("PRIMARY MUSCLES:");
+        textField1.setPreferredSize(new Dimension(220, 200));
+        textField1.setLayout(new GridLayout(3, 1, 60, 60));
+        textField1.setEditable(false);
+        textField2 = new JTextArea("SECONDARY MUSCLES:");
+        textField2.setPreferredSize(new Dimension(220, 200));
+        textField2.setLayout(new GridLayout(2, 1, 60, 60));
+        textField2.setEditable(false);
+    }
+    private void createDetailPanels() {
+        detailPanel1 = new DetailPanel(new Color(144, 200, 159));
+        detailPanel1.setLayout(new GridLayout(10, 1));
+        detailPanel1.add(new JLabel("User the dropdown to select preferred exercise"));
+        detailPanel1.add(bodypartBox);
+        detailPanel1.add(excBox);
+        detailPanel1.add(new JLabel("Enter weight: "));
+        detailPanel1.add(weight);
+        detailPanel1.add(new JLabel("Enter repetitions: "));
+        detailPanel1.add(repetitions);
+        detailPanel1.add(addToList);
+        detailPanel1.add(removeFromList);
+        detailPanel1.add(save);
+        detailPanel2 = new DetailPanel(Color.yellow);
+        detailPanel3 = new DetailPanel(Color.white);
+        detailPanel4 = new DetailPanel(new Color(200, 158, 180));
     }
 
     private void createMuscleMap() {
@@ -168,10 +244,12 @@ public class ComposerPanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         if(actionEvent.getSource() == bodypartBox) {
+            bodypartBox.removeItem("Choose muscle group");
             for (String s : bodyparts) {
                 if (bodypartBox.getSelectedItem().equals(s)) {
                //     System.out.println(s);
                     createExcBox(s);
+
                 }
 
             }
@@ -182,11 +260,58 @@ public class ComposerPanel extends JPanel implements ActionListener {
          //       System.out.println(currExc);
          //       System.out.println(excMap.indexOf(currExc));
                 currExcDet = new Exercise(currExc, this);
-               for(String primMuscle: currExcDet.primMuscles) System.out.println(primMuscle);
+                String txtfld1 = "PRIMARY MUSCLES:\n";
+                String txtfld2 = "SECONDARY MUSCLES:\n";
+               for(String primMuscle: currExcDet.primMuscles) txtfld1 += primMuscle + "\n";
+               for(String secMuscle: currExcDet.secMuscles) txtfld2 += secMuscle + "\n";
+               textField1.setText(txtfld1);
+               textField2.setText(txtfld2);
+            }
+        }
+        if((actionEvent.getSource() == addToList) && currExcDet != null) {
+            String wgh = weight.getText();
+            String reps = repetitions.getText();
+
+            String[] name = new String[] {currExcDet.getCurrExc()};
+            listmodel.addElement(name[0] + " x " + wgh + " kg x " + reps + " reps.");
+            trainingList.setModel(listmodel);
+        }
+        if(actionEvent.getSource() == removeFromList) {
+            if(!trainingList.isSelectionEmpty()) {
+                listmodel.removeElement(trainingList.getSelectedValue());
+                System.out.println("TEST");
             }
         }
 
 
 
+    }
+
+    @Override
+    public void focusGained(FocusEvent focusEvent) {
+        if(focusEvent.getSource() == weight) {
+            if(weight.getText().equals("Weight in KGs")) {
+                weight.setText("");
+            }
+        }
+        if(focusEvent.getSource() == repetitions) {
+            if(repetitions.getText().equals("Enter total number of repetitions here")) {
+                repetitions.setText("");
+            }
+        }
+    }
+
+    @Override
+    public void focusLost(FocusEvent focusEvent) {
+        if(focusEvent.getSource() == weight) {
+            if(weight.getText().equals("")) {
+                weight.setText("Weight in KGs");
+            }
+        }
+        if(focusEvent.getSource() == repetitions) {
+            if(repetitions.getText().equals("")) {
+                repetitions.setText("Enter total number of repetitions here");
+            }
+        }
     }
 }

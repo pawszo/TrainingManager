@@ -2,6 +2,17 @@ package usr;
 
 public class User {
 
+
+    public User() {
+        userName = null;
+        password = null;
+    }
+
+    public User(String username) {
+        userName = username;
+    }
+
+
     private String userName;
     private String password;
 
@@ -20,11 +31,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public User() {
-        userName = null;
-        password = null;
     }
 
     public User(String userName, String password) {

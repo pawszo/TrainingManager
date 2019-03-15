@@ -6,9 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.Authenticator;
-import java.net.PasswordAuthentication;
-import java.util.Scanner;
 
 public class Logon extends JDialog implements ActionListener {
     // private PasswordAuthentication // later for authenticator
@@ -24,7 +21,6 @@ public class Logon extends JDialog implements ActionListener {
     private JLabel info;
     private JTextArea area;
     private int failCount = 0;
-
 
 
     public Logon(UserPanel userPanel) {
@@ -52,8 +48,6 @@ public class Logon extends JDialog implements ActionListener {
 
     private void start() {
         user = new User();
-        user.setUserName("username123");
-        user.setPassword("password1");
         add(userNameLabel);
         add(userNameField);
         add(pwLabel);
@@ -65,29 +59,36 @@ public class Logon extends JDialog implements ActionListener {
     }
 
 
+
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
 
-        if(actionEvent.getSource() == submit) {
+        if (actionEvent.getSource() == submit) {
             System.out.println("Validating credentials...");
-            if(userNameField.getText().equals(user.getUserName()) &&
+            if (DBcon.checkUserPassword(userNameField.getText(), pwField.getText())) {
+                this.user = new User(userNameField.getText());
+                System.out.println("LOGIN SUCCESSFULL");
+                this.userPanel.setLoggedIn(user);
+                this.setVisible(false);
+            }
+        /*    if(userNameField.getText().equals(user.getUserName()) &&
                 pwField.getText().equals(user.getPassword())) {
                 System.out.println("Login successfull");
                 userPanel.setUser(new User(userNameField.getText(), pwField.getText()));
-            }
+            } */
             else {
                 failCount++;
                 System.out.println("Login failed.");
-                if(failCount < 5) {
+                if (failCount < 5) {
                     info.setText("Login failed " + failCount + " times.\nCheck spelling.");
                 } else {
                     info.setText("Login failed " + failCount + " times.\nUse option \"Lost password?\"");
                 }
             }
-        //    System.out.println(userNameField.getText());
-        //    System.out.println(pwField.getText());
+            //    System.out.println(userNameField.getText());
+            //    System.out.println(pwField.getText());
         }
-        if(actionEvent.getSource() == lostPw) {
+        if (actionEvent.getSource() == lostPw) {
             userPanel.setLostPassword(new LostPassword(userPanel));
             this.setVisible(false);
         }

@@ -14,7 +14,7 @@ public class UserPanel extends JPanel implements ActionListener {
 
 
     private JTextField userInfo;
-    private JButton logIn, logOut, currentButton, createAccountButton;
+    private JButton logIn, logOut, createAccountButton;
     private User user;
 
 
@@ -28,10 +28,6 @@ public class UserPanel extends JPanel implements ActionListener {
         setBackground(Color.ORANGE);
         setLayout(new FlowLayout());
 
-
-
-
-
         createComponents();
         addComponents();
 
@@ -41,22 +37,35 @@ public class UserPanel extends JPanel implements ActionListener {
         logIn = new JButton("LOG IN");
         logOut = new JButton("LOG OUT");
         userInfo = new JTextField();
-        if (user == null) {
-            currentButton = logIn;
-            userInfo.setText("Log in or register to continue");
-        } else {
-            currentButton = logOut;
-            userInfo.setText("Logged in as: " + user.getUserName() + ".");
-        }
-        currentButton.addActionListener(this);
+        userInfo.setText("Log in or register to continue");
         createAccountButton = new JButton("CREATE NEW USER");
-        createAccountButton.addActionListener(this);
 
     }
     private void addComponents() {
-        add(currentButton);
+        add(logIn);
+        add(logOut);
         add(createAccountButton);
         add(userInfo);
+        logIn.addActionListener(this);
+        logOut.addActionListener(this);
+        createAccountButton.addActionListener(this);
+        logOut.setVisible(false);
+    }
+
+    public void setLoggedIn(User user) {
+        this.user = user;
+        this.getUserInfo().setText("Logged in as " + user.getUserName() + ".");
+        this.logIn.setVisible(false);
+        logOut.setVisible(true);
+        this.createAccountButton.setVisible(false);
+    }
+
+    private void setLoggedOut() {
+        user = null;
+        userInfo.setText("Log in or register to continue");
+        logOut.setVisible(false);
+        logIn.setVisible(true);
+        createAccountButton.setVisible(true);
     }
 
 
@@ -71,11 +80,12 @@ public class UserPanel extends JPanel implements ActionListener {
         }
         if(actionEvent.getSource() == logOut) {
             System.out.println("LOG OUT");
+            setLoggedOut();
         }
         if(actionEvent.getSource() == createAccountButton) {
             System.out.println("CREATE NEW USER DIALOG");
             createUser = new CreateUser(this);
-          ;
+
         }
     }
 
@@ -106,5 +116,13 @@ public class UserPanel extends JPanel implements ActionListener {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    private JTextField getUserInfo() {
+        return userInfo;
+    }
+
+    public void setUserInfo(JTextField userInfo) {
+        this.userInfo = userInfo;
     }
 }

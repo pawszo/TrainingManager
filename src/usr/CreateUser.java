@@ -6,7 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class CreateUser extends JDialog implements ActionListener {
 
@@ -64,6 +63,7 @@ public class CreateUser extends JDialog implements ActionListener {
 
     }
 
+
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
 
@@ -72,7 +72,9 @@ public class CreateUser extends JDialog implements ActionListener {
             if(userNameField.getText().equals("") || pwField.getText().equals("") || emailField.getText().equals("")) {
                 System.out.println("You need to enter fill in all fields");
             } else if (pwField.getText().equals(pwField2.getText())) {
+                DBcon.insertUser(userNameField.getText(), emailField.getText(), pwField.getText(), 'm');
                 System.out.println("NEW ACCOUNT CREATED");
+                DBcon.connect();
                 for(JComponent f:fields) {
                     f.setEnabled(false);
                 }

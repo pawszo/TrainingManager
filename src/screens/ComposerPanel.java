@@ -12,6 +12,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 
 /**
  * Panel where you compose a traning plan from
@@ -24,9 +25,11 @@ public class ComposerPanel extends JPanel implements ActionListener, FocusListen
     private String[] bodyparts, currBodypartString;
     private String currExc;
     private Exercise currExcDet;
-    public LinkedHashMap<Integer, String> muscleMap;
+    private LinkedList<Exercise> list;
+    public static LinkedHashMap<Integer, String> muscleMap;
     public ArrayList<String> excMap;
-    private JPanel detailPanel1, detailPanel2, detailPanel3, detailPanel4;
+    private JPanel detailPanel1, detailPanel2, detailPanel3;
+    private DetailPanel detailPanel4;
 
     private JTextArea textField1;
     private JTextArea textField2;
@@ -48,6 +51,8 @@ public class ComposerPanel extends JPanel implements ActionListener, FocusListen
         createDetailPanels();
 
         addComponentsToPanels();
+
+        list = new LinkedList<Exercise>();
     }
     private void createTrainingList() {
         trainingList = new TrainingList();
@@ -114,10 +119,10 @@ public class ComposerPanel extends JPanel implements ActionListener, FocusListen
         detailPanel1.add(save);
         detailPanel2 = new DetailPanel(Color.yellow);
         detailPanel3 = new DetailPanel(Color.white);
-        detailPanel4 = new DetailPanel(new Color(200, 158, 180));
+        detailPanel4 = new DetailPanel(new Color(193, 200, 167), true);
     }
 
-    private void createMuscleMap() {
+    public static void createMuscleMap() {
         muscleMap = new LinkedHashMap<Integer, String>();
         muscleMap.put(1, "Abdominals");
         muscleMap.put(2, "Obliques");
@@ -260,6 +265,8 @@ public class ComposerPanel extends JPanel implements ActionListener, FocusListen
          //       System.out.println(currExc);
          //       System.out.println(excMap.indexOf(currExc));
                 currExcDet = new Exercise(currExc, this);
+                list.add(new Exercise(currExc, this));
+
                 String txtfld1 = "PRIMARY MUSCLES:\n";
                 String txtfld2 = "SECONDARY MUSCLES:\n";
                for(String primMuscle: currExcDet.primMuscles) txtfld1 += primMuscle + "\n";

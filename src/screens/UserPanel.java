@@ -46,6 +46,7 @@ public class UserPanel extends JPanel implements ActionListener {
         add(logOut);
         add(createAccountButton);
         add(userInfo);
+        userInfo.setEditable(false);
         logIn.addActionListener(this);
         logOut.addActionListener(this);
         createAccountButton.addActionListener(this);

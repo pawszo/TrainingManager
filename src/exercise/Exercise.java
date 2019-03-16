@@ -2,9 +2,6 @@ package exercise;
 
 import screens.ComposerPanel;
 
-import java.util.ArrayList;
-import java.util.Set;
-
 public class Exercise {
 
     public String[] primMuscles; //primary muscles trained
@@ -21,6 +18,7 @@ public class Exercise {
         create();
     }
 
+    // public void
 
 
     public void create() {

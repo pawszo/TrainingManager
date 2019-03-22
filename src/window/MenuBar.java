@@ -36,7 +36,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
     private void createMenu() {
         userMenu = new JMenu("User");
         composerMenu = new JMenu("Compose plan");
-        trainingMenu = new JMenu("exercise");
+        trainingMenu = new JMenu("Exercise");
         noteMenu = new JMenu("Notes");
     }
 

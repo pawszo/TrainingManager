@@ -56,7 +56,7 @@ public class Frame extends JFrame {
     private void createMainPanel(){
         mainPanel = new JPanel(new CardLayout());
         mainPanel.setSize(dim);
-        mainPanel.setBackground(Color.red);
+        mainPanel.setBackground(new Color(115, 180, 179));
     }
 
     private void createUserPanel(Dimension dim) {

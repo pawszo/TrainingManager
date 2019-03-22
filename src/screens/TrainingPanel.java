@@ -17,9 +17,11 @@ public class TrainingPanel extends JPanel implements ActionListener {
     private Timer timer;
     JButton startTimer, stopTimer, pauseTimer;
     private JPanel buttonPanel;
+    private Frame frame;
    // private double count;
 
-    public TrainingPanel(Dimension dim) {
+    public TrainingPanel(Dimension dim, Frame frame) {
+        this.frame = frame;
         setSize(dim);
         setOpaque(false);
         setBackground(new Color(74, 255, 233, 177));

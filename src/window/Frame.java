@@ -11,10 +11,10 @@ import java.awt.*;
 public class Frame extends JFrame {
 
     private JPanel mainPanel;
-    private JPanel userPanel;
-    private JPanel composerPanel;
-    private JPanel trainingPanel;
-    private JPanel notePanel;
+    private UserPanel userPanel;
+    private ComposerPanel composerPanel;
+    private TrainingPanel trainingPanel;
+    private NotePanel notePanel;
 
     private Dimension dim;
     private CardLayout cl;
@@ -31,10 +31,10 @@ public class Frame extends JFrame {
         setFrameProperties();
 
         createMainPanel();
-        createUserPanel(dim);
-        createComposerPanel(dim);
-        createTrainingPanel(dim);
-        createNotePanel(dim);
+        createUserPanel(dim, this);
+        createComposerPanel(dim, this);
+        createTrainingPanel(dim, this);
+        createNotePanel(dim, this);
 
         cl = (CardLayout) (mainPanel.getLayout());
 
@@ -59,22 +59,22 @@ public class Frame extends JFrame {
         mainPanel.setBackground(new Color(115, 180, 179));
     }
 
-    private void createUserPanel(Dimension dim) {
-        userPanel = new UserPanel(dim);
+    private void createUserPanel(Dimension dim, Frame frame) {
+        userPanel = new UserPanel(dim, frame);
         mainPanel.add(userPanel, USERPANEL);
     }
-    private void createComposerPanel(Dimension dim) {
-        composerPanel = new ComposerPanel(dim);
+    private void createComposerPanel(Dimension dim, Frame frame) {
+        composerPanel = new ComposerPanel(dim, frame);
         mainPanel.add(composerPanel, COMPOSERPANEL);
 
     }
-    private void createTrainingPanel(Dimension dim) {
-        trainingPanel = new TrainingPanel(dim);
+    private void createTrainingPanel(Dimension dim, Frame frame) {
+        trainingPanel = new TrainingPanel(dim, frame);
         mainPanel.add(trainingPanel, TRAININGPANEL);
 
     }
-    private void createNotePanel(Dimension dim) {
-        notePanel = new NotePanel(dim);
+    private void createNotePanel(Dimension dim, Frame frame) {
+        notePanel = new NotePanel(dim, frame);
         mainPanel.add(notePanel, NOTEPANEL);
     }
 
@@ -86,31 +86,31 @@ public class Frame extends JFrame {
         this.mainPanel = mainPanel;
     }
 
-    public JPanel getUserPanel() {
+    public UserPanel getUserPanel() {
         return userPanel;
     }
-    public void setUserPanel(JPanel userPanel) {
+    public void setUserPanel(UserPanel userPanel) {
         this.userPanel = userPanel;
     }
 
-    public JPanel getComposerPanel() {
+    public ComposerPanel getComposerPanel() {
         return composerPanel;
     }
-    public void setComposerPanel(JPanel composerPanel) {
+    public void setComposerPanel(ComposerPanel composerPanel) {
         this.composerPanel = composerPanel;
     }
 
-    public JPanel getTrainingPanel() {
+    public TrainingPanel getTrainingPanel() {
         return trainingPanel;
     }
-    public void setTrainingPanel(JPanel trainingPanel) {
+    public void setTrainingPanel(TrainingPanel trainingPanel) {
         this.trainingPanel = trainingPanel;
     }
 
-    public JPanel getNotePanel() {
+    public NotePanel getNotePanel() {
         return notePanel;
     }
-    public void setNotePanel(JPanel notePanel) {
+    public void setNotePanel(NotePanel notePanel) {
         this.notePanel = notePanel;
     }
 

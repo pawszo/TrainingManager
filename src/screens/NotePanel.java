@@ -16,17 +16,18 @@ public class NotePanel extends JPanel implements ActionListener {
     private JButton addButton, deleteButton, zoomButton, syncButton;
     private JList<String> noteList;
     private JPanel buttonPanel, toolPanel;
-    private DefaultListModel listmodel;
+    private static DefaultListModel listmodel;
     private JDialog zoomDialog;
+    private Frame frame;
 
 
-    public NotePanel(Dimension dim) {
+    public NotePanel(Dimension dim, Frame frame) {
+        this.frame = frame;
         setSize(dim);
         setBackground(Color.pink);
         setLayout(new GridLayout(1, 2));
         createComponents();
         addComponents();
-
 
     }
 
@@ -77,7 +78,7 @@ public class NotePanel extends JPanel implements ActionListener {
         zoomDialog.add(zoomField);
     }
 
-    public void syncNoteList() {
+    public static void syncNoteList() {
         listmodel.removeAllElements();
         ArrayList<String> noteArray = DBcon.getNoteArrayList();
         for(String n:noteArray) {
@@ -91,7 +92,7 @@ public class NotePanel extends JPanel implements ActionListener {
             String note = noteField.getText();
             DBcon.addNotes(note);
             syncNoteList();
-            System.out.println(User.currentUser.toString());
+            noteField.setText(null);
 
         }
         if(e.getSource() == deleteButton) {

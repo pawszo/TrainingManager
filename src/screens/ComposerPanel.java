@@ -31,14 +31,15 @@ public class ComposerPanel extends JPanel implements ActionListener, FocusListen
     public ArrayList<String> excMap;
     private JPanel detailPanel1, detailPanel2, detailPanel3;
     private DetailPanel detailPanel4;
-
+    private Frame frame;
     private JTextArea textField1;
     private JTextArea textField2;
     private JButton addToList, removeFromList, save;
     private JList trainingList;
     private DefaultListModel listmodel;
 
-    public ComposerPanel(Dimension dim) {
+    public ComposerPanel(Dimension dim, Frame frame) {
+        this.frame = frame;
         setSize(dim);
         setBackground(Color.yellow);
         setLayout(new GridLayout(2, 2));

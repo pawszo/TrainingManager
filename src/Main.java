@@ -4,12 +4,12 @@ import window.MenuBar;
 
 
 public class Main {
-
+    public static Main main;
     private Frame frame;
-    public MenuBar menuBar;
+    public static MenuBar menuBar;
 
     public static void main(String[] args) {
-        new Main();
+        main = new Main();
     }
 
     public Main() {
@@ -21,6 +21,7 @@ public class Main {
 
 
     }
+
 
 
 }

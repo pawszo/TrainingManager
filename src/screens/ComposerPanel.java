@@ -310,7 +310,6 @@ public class ComposerPanel extends JPanel implements ActionListener, FocusListen
         if(actionEvent.getSource() == removeFromList) {
             if(!trainingList.isSelectionEmpty()) {
                 listmodel.removeElement(trainingList.getSelectedValue());
-                System.out.println("TEST");
             }
         }
 

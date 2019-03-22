@@ -15,6 +15,12 @@ public class User {
 
     private String userName;
     private String password;
+    private String email;
+    private int userID;
+    public static int currID;
+
+
+    public static User currentUser = null;
 
 
     public String getUserName() {
@@ -36,5 +42,21 @@ public class User {
     public User(String userName, String password) {
         this.userName = userName;
         this.password = password;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int id) {
+        this.userID = id;
+    }
+
+    @Override
+    public String toString() {
+        String word = "USERNAME: " + this.userName + "\n";
+        word += "EMAIL: " + this.email + "\n";
+        word += "USER_ID: " + this.userID + "\n";
+        return word;
     }
 }

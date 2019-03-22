@@ -54,15 +54,16 @@ public class UserPanel extends JPanel implements ActionListener {
     }
 
     public void setLoggedIn(User user) {
-        this.user = user;
-        this.getUserInfo().setText("Logged in as " + user.getUserName() + ".");
+        User.currentUser = user;
+        User.currentUser.setUserID(User.currID);
+        this.getUserInfo().setText("Logged in as " + User.currentUser.getUserName() + ".");
         this.logIn.setVisible(false);
         logOut.setVisible(true);
         this.createAccountButton.setVisible(false);
     }
 
     private void setLoggedOut() {
-        user = null;
+        User.currentUser = null;
         userInfo.setText("Log in or register to continue");
         logOut.setVisible(false);
         logIn.setVisible(true);

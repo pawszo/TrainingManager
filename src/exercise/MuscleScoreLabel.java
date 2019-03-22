@@ -5,13 +5,15 @@ import javax.swing.*;
 public class MuscleScoreLabel extends JLabel {
 
     public int count;
-    private String newText;
     private String text;
+    private String muscle;
 
      public MuscleScoreLabel (String text) {
          count = 0;
-         setNewText(text);
-         super.setText(this.text);
+         this.muscle = text;
+         setText(muscle + " : " + count + "\n");
+      //   setNewText(text);
+      //   super.setText(this.text);
 
      }
 
@@ -20,9 +22,13 @@ public class MuscleScoreLabel extends JLabel {
          setText(text);
      }
 
+     public String getMuscle() {
+         return muscle;
+     }
+
      //@Override
-     public void setNewText(String text) {
-         this.text = "      " + text + " : " + count + "\n";
+     public void setNewText() {
+         setText(muscle + " : " + count + "\n");
      }
 
 }

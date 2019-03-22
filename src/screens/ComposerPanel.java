@@ -2,6 +2,7 @@ package screens;
 
 import exercise.DetailPanel;
 import exercise.Exercise;
+import exercise.MuscleScoreLabel;
 import exercise.TrainingList;
 
 import javax.swing.*;
@@ -279,9 +280,32 @@ public class ComposerPanel extends JPanel implements ActionListener, FocusListen
             String wgh = weight.getText();
             String reps = repetitions.getText();
 
-            String[] name = new String[] {currExcDet.getCurrExc()};
-            listmodel.addElement(name[0] + " x " + wgh + " kg x " + reps + " reps.");
+            String name = currExcDet.getCurrExc();
+            listmodel.addElement(name + " x " + wgh + " kg x " + reps + " reps.");
             trainingList.setModel(listmodel);
+           // System.out.println(currExcDet.getCurrExc());
+            for(MuscleScoreLabel m: detailPanel4.getPlanScore()) {
+                for(String muscP:currExcDet.primMuscles) {
+
+
+                    if (m.getMuscle().equals(muscP)) {
+                        System.out.println(muscP);
+                        m.increase();
+                        m.increase();
+                        m.setNewText();
+                    }
+                }
+                for(String muscS:currExcDet.secMuscles) {
+
+
+                    if (m.getMuscle().equals(muscS)) {
+                        System.out.println(muscS);
+                        m.increase();
+                        m.setNewText();
+                    }
+                }
+            }
+
         }
         if(actionEvent.getSource() == removeFromList) {
             if(!trainingList.isSelectionEmpty()) {

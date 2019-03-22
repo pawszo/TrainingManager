@@ -22,7 +22,7 @@ public class DetailPanel extends JPanel {
         createPlanScore();
     }
 
-    public static LinkedList<MuscleScoreLabel> planScore;
+    private  LinkedList<MuscleScoreLabel> planScore;
 
     public void createPlanScore() {
         planScore = new LinkedList<>();
@@ -36,5 +36,13 @@ public class DetailPanel extends JPanel {
             planScore.get(i).setBackground(Color.yellow);
             add(planScore.get(i));
         }
+    }
+
+    public LinkedList<MuscleScoreLabel> getPlanScore() {
+        return planScore;
+    }
+
+    public void setPlanScore(LinkedList<MuscleScoreLabel> planScore) {
+        this.planScore = planScore;
     }
 }

@@ -12,10 +12,13 @@ import java.util.ArrayList;
 public class NotePanel extends JPanel implements ActionListener {
 
     private JTextField noteField;
-    private JButton addButton, deleteButton, editButton, syncButton;
+    private JTextArea zoomField;
+    private JButton addButton, deleteButton, zoomButton, syncButton;
     private JList<String> noteList;
     private JPanel buttonPanel, toolPanel;
     private DefaultListModel listmodel;
+    private JDialog zoomDialog;
+
 
     public NotePanel(Dimension dim) {
         setSize(dim);
@@ -35,8 +38,13 @@ public class NotePanel extends JPanel implements ActionListener {
         addButton = new JButton("ADD NOTE");
         addButton.addActionListener(this);
 
-        editButton = new JButton("EDIT NOTE");
-        editButton.addActionListener(this);
+        zoomButton = new JButton("VIEW FULL NOTE");
+        zoomButton.addActionListener(this);
+        zoomDialog = new JDialog();
+        zoomDialog.setVisible(false);
+        zoomField = new JTextArea();
+        zoomField.setFont(new Font("Serif", Font.PLAIN, 32));
+        zoomField.setLineWrap(true);
 
         syncButton =  new JButton("SYNCHRONIZE");
         syncButton.addActionListener(this);
@@ -61,11 +69,12 @@ public class NotePanel extends JPanel implements ActionListener {
         toolPanel.add(noteList);
         buttonPanel.add(addButton);
         buttonPanel.add(deleteButton);
-        buttonPanel.add(editButton);
+        buttonPanel.add(zoomButton);
         buttonPanel.add(syncButton);
         toolPanel.add(buttonPanel);
         add(toolPanel);
         noteList.setModel(listmodel);
+        zoomDialog.add(zoomField);
     }
 
     public void syncNoteList() {
@@ -91,9 +100,12 @@ public class NotePanel extends JPanel implements ActionListener {
                 syncNoteList();
             }
         }
-        if(e.getSource() == editButton) {
+        if(e.getSource() == zoomButton) {
             if(!noteList.isSelectionEmpty()) {
-                noteField.setText(noteList.getSelectedValue());
+                zoomField.setText(noteList.getSelectedValue());
+                zoomDialog.setVisible(true);
+                zoomDialog.setSize(new Dimension(600, 400));
+                zoomDialog.requestFocus();
             }
         }
         if(e.getSource() == syncButton) {

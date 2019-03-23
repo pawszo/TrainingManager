@@ -76,6 +76,7 @@ public class NotePanel extends JPanel implements ActionListener {
         add(toolPanel);
         noteList.setModel(listmodel);
         zoomDialog.add(zoomField);
+        zoomDialog.setLocationRelativeTo(this);
     }
 
     public static void syncNoteList() {
@@ -107,6 +108,7 @@ public class NotePanel extends JPanel implements ActionListener {
                 zoomDialog.setVisible(true);
                 zoomDialog.setSize(new Dimension(600, 400));
                 zoomDialog.requestFocus();
+                zoomDialog.setTitle("Note creation date: " + DBcon.getNoteDate(noteList.getSelectedValue()));
             }
         }
         if(e.getSource() == syncButton) {

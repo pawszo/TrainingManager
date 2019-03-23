@@ -139,7 +139,7 @@ public class DBcon {
 
             stmt = conn.createStatement();  // create statement
 
-            String sql = "INSERT INTO note (userID, note, date) VALUES ('" + User.currentUser.getUserID() + "', '" + note + "', curdate());";
+            String sql = "INSERT INTO note (userID, note, date) VALUES ('" + User.currentUser.getUserID() + "', '" + note + "', now());";
             stmt.executeUpdate(sql);
 
             stmt.close();
@@ -224,6 +224,43 @@ public class DBcon {
                 if(conn != null) conn.close();
             } catch(SQLException ex) {
                 System.out.println(ex.getMessage());
+            }
+        }
+    }
+
+    public static String getNoteDate(String note) {
+        Connection conn = null;
+        Statement stmt = null;
+        String date = "";
+
+
+        try {
+            Class.forName(JDBC_DRIVER); //register JDBC driver
+
+            conn = DriverManager.getConnection(url, DBuser, DBpassword);  //open connection
+            System.out.println("CONNECTION SUCCESSFUL");
+
+            stmt = conn.createStatement();  // create statement
+
+            String sql = "SELECT date FROM note WHERE userID='" + User.currentUser.getUserID() + "' AND note='" + note + "';";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while(rs.next()) {
+                date = rs.getString("date");
+            }
+            rs.close();
+
+
+
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println("CONNECTION FAILED : " + e );
+        } finally {
+            try{
+                if(conn != null) conn.close();
+                return date;
+            } catch(SQLException ex) {
+                System.out.println(ex.getMessage());
+                return date;
             }
         }
     }

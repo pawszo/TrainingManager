@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
@@ -260,6 +261,14 @@ public class ComposerPanel extends JPanel implements ActionListener, FocusListen
                 }
 
             }
+        }
+
+    /*    private void printPlan() throws IOException {
+
+        }
+*/
+        /** SAVING CURRENT LIST TO FILE */
+        if(actionEvent.getSource() == save) {
         }
         if(actionEvent.getSource() == excBox) {
             if(excBox.getSelectedItem() != null && !excBox.getSelectedItem().equals("Choose exercise")) {

@@ -16,15 +16,19 @@ public class DetailPanel extends JPanel {
 
     public DetailPanel(Color color, boolean isPlanScore){
         super();
+        setBorder(BorderFactory.createEmptyBorder(20, 20, 0, 0));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setSize(new Dimension(480, 420));
         setBackground(color);
         createPlanScore();
+        setOpaque(true);
     }
 
     private  LinkedList<MuscleScoreLabel> planScore;
 
     public void createPlanScore() {
+        removeAll();
+        repaint();
         planScore = new LinkedList<>();
 
         for(int i = 1; i <= ComposerPanel.muscleMap.size(); i++) {

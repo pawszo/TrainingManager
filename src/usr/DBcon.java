@@ -227,7 +227,7 @@ public class DBcon {
             }
         }
     }
-
+    /** returns note creation date as string, used as title for zoomDialog in notepanel */
     public static String getNoteDate(String note) {
         Connection conn = null;
         Statement stmt = null;

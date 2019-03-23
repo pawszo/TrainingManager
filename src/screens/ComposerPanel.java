@@ -1,9 +1,6 @@
 package screens;
 
-import exercise.DetailPanel;
-import exercise.Exercise;
-import exercise.MuscleScoreLabel;
-import exercise.TrainingList;
+import exercise.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -32,15 +29,15 @@ public class ComposerPanel extends JPanel implements ActionListener, FocusListen
     public ArrayList<String> excMap;
     private JPanel detailPanel1, detailPanel2, detailPanel3;
     private DetailPanel detailPanel4;
-    private Frame frame;
+    private PlanPanel planPanel;
     private JTextArea textField1;
     private JTextArea textField2;
     private JButton addToList, removeFromList, save;
     private JList trainingList;
     private DefaultListModel listmodel;
 
-    public ComposerPanel(Dimension dim, Frame frame) {
-        this.frame = frame;
+    public ComposerPanel(Dimension dim, PlanPanel planPanel) {
+        this.planPanel = planPanel;
         setSize(dim);
         setBackground(Color.yellow);
         setLayout(new GridLayout(2, 2));
@@ -269,6 +266,18 @@ public class ComposerPanel extends JPanel implements ActionListener, FocusListen
 */
         /** SAVING CURRENT LIST TO FILE */
         if(actionEvent.getSource() == save) {
+            Plan plan = new Plan();
+            for(MuscleScoreLabel m:detailPanel4.getPlanScore()) {
+                plan.addMuscle(m.getText());
+            }
+            plan.setExercises(listmodel.toArray());
+            planPanel.addPlan(plan);
+            detailPanel4.createPlanScore(); // refresh musclescorelabels
+            listmodel.removeAllElements(); //refresh exercise list
+            for(int i = 0; i < detailPanel4.getPlanScore().size(); i++) {
+                detailPanel4.getPlanScore().get(i).clearCount();
+            } //clear others
+
         }
         if(actionEvent.getSource() == excBox) {
             if(excBox.getSelectedItem() != null && !excBox.getSelectedItem().equals("Choose exercise")) {

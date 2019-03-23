@@ -22,11 +22,15 @@ public class MuscleScoreLabel extends JLabel {
          setText(text);
      }
 
+     public void clearCount() {
+         count = 0;
+
+     }
+
      public String getMuscle() {
          return muscle;
      }
 
-     //@Override
      public void setNewText() {
          setText(muscle + " : " + count + "\n");
      }

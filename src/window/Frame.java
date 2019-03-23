@@ -1,9 +1,6 @@
 package window;
 
-import screens.ComposerPanel;
-import screens.NotePanel;
-import screens.TrainingPanel;
-import screens.UserPanel;
+import screens.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,6 +12,7 @@ public class Frame extends JFrame {
     private ComposerPanel composerPanel;
     private TrainingPanel trainingPanel;
     private NotePanel notePanel;
+    private PlanPanel planPanel;
 
     private Dimension dim;
     private CardLayout cl;
@@ -23,6 +21,7 @@ public class Frame extends JFrame {
     public static String COMPOSERPANEL = "COMPOSERPANEL";
     public static String TRAININGPANEL = "TRAININGPANEL";
     public static String NOTEPANEL = "NOTEPANEL";
+    public static String PLANPANEL = "PLANPANEL";
 
 
     public Frame(int width, int height, MenuBar menuBar) {
@@ -31,16 +30,19 @@ public class Frame extends JFrame {
         setFrameProperties();
 
         createMainPanel();
+        createPlanPanel(dim, this);
         createUserPanel(dim, this);
-        createComposerPanel(dim, this);
+        createComposerPanel(dim, planPanel);
         createTrainingPanel(dim, this);
         createNotePanel(dim, this);
+
 
         cl = (CardLayout) (mainPanel.getLayout());
 
         add(mainPanel);
         pack();
         setVisible(true);
+        cl.show(mainPanel, "USERPANEL"); /** make sure to start with user panel */
     }
 
 
@@ -63,8 +65,13 @@ public class Frame extends JFrame {
         userPanel = new UserPanel(dim, frame);
         mainPanel.add(userPanel, USERPANEL);
     }
-    private void createComposerPanel(Dimension dim, Frame frame) {
-        composerPanel = new ComposerPanel(dim, frame);
+
+    private void createPlanPanel(Dimension dim, Frame frame) {
+        planPanel = new PlanPanel(dim, frame);
+        mainPanel.add(planPanel, PLANPANEL);
+    }
+    private void createComposerPanel(Dimension dim, PlanPanel planPanel) {
+        composerPanel = new ComposerPanel(dim, planPanel);
         mainPanel.add(composerPanel, COMPOSERPANEL);
 
     }

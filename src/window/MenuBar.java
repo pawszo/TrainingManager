@@ -3,25 +3,12 @@ package window;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 
 public class MenuBar extends JMenuBar implements ActionListener {
 
-    public static String panel;
 
-    public JMenu userMenu;
-    public JMenuItem userMenuItem;
-
-    public JMenu composerMenu;
-    public JMenuItem composerMenuItem;
-
-    public JMenu trainingMenu;
-    public JMenuItem trainingMenuItem;
-
-    public JMenu noteMenu;
-    public JMenuItem noteMenuItem;
-
+    public JMenu userMenu, composerMenu, trainingMenu;
+    public JMenuItem userMenuItem, composerMenuItem, trainingMenuItem, noteMenuItem, printoutsItem;
     public Frame frame;
 
     public MenuBar() {
@@ -30,14 +17,12 @@ public class MenuBar extends JMenuBar implements ActionListener {
         addItemsToMenu();
         addMenuToBar();
         setVisible(true);
-
     }
 
     private void createMenu() {
         userMenu = new JMenu("User");
-        composerMenu = new JMenu("Compose plan");
+        composerMenu = new JMenu("Training plan");
         trainingMenu = new JMenu("Exercise");
-        noteMenu = new JMenu("Notes");
     }
 
     private void createMenuItems() {
@@ -47,24 +32,26 @@ public class MenuBar extends JMenuBar implements ActionListener {
         composerMenuItem = new JMenuItem("Composer");
         composerMenuItem.addActionListener(this);
 
-        trainingMenuItem = new JMenuItem("Training");
+        trainingMenuItem = new JMenuItem("Stopwatch");
         trainingMenuItem.addActionListener(this);
 
-        noteMenuItem = new JMenuItem("Note");
+        noteMenuItem = new JMenuItem("Notes");
         noteMenuItem.addActionListener(this);
+        printoutsItem = new JMenuItem("Your training plans");
+        printoutsItem.addActionListener(this);
     }
 
     private void addItemsToMenu() {
         userMenu.add(userMenuItem);
         composerMenu.add(composerMenuItem);
+        composerMenu.add(printoutsItem);
         trainingMenu.add(trainingMenuItem);
-        noteMenu.add(noteMenuItem);
+        trainingMenu.add(noteMenuItem);
     }
     private void addMenuToBar() {
         add(userMenu);
         add(composerMenu);
         add(trainingMenu);
-        add(noteMenu);
     }
     public void addFrame(Frame frame) {
         this.frame = frame;
@@ -87,6 +74,10 @@ public class MenuBar extends JMenuBar implements ActionListener {
         if(actionEvent.getSource() == noteMenuItem) {
             frame.getCl().show(frame.getMainPanel(), "NOTEPANEL");
             System.out.println("NOTEPANEL");
+        }
+        if(actionEvent.getSource() == printoutsItem) {
+            frame.getCl().show(frame.getMainPanel(), "PLANPANEL");
+            System.out.println("PLANPANEL");
         }
     }
 

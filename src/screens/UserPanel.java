@@ -1,8 +1,4 @@
 package screens;
-
-import javafx.embed.swing.JFXPanel;
-import javafx.scene.chart.BubbleChart;
-import javafx.scene.chart.Chart;
 import usr.CreateUser;
 import usr.Logon;
 import usr.User;
@@ -12,7 +8,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Vector;
 
 public class UserPanel extends JPanel implements ActionListener {
 

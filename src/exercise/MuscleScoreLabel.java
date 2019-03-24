@@ -11,7 +11,7 @@ public class MuscleScoreLabel extends JLabel {
      public MuscleScoreLabel (String text) {
          count = 0;
          this.muscle = text;
-         setText(muscle + " : " + count + "\n");
+         setText(muscle + " : " + count + "");
       //   setNewText(text);
       //   super.setText(this.text);
 
@@ -32,7 +32,7 @@ public class MuscleScoreLabel extends JLabel {
      }
 
      public void setNewText() {
-         setText(muscle + " : " + count + "\n");
+         setText(muscle + " : " + count + "");
      }
 
 }

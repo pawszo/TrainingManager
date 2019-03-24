@@ -1,5 +1,9 @@
 package usr;
 
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.common.PDStream;
+
+import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -261,6 +265,41 @@ public class DBcon {
             } catch(SQLException ex) {
                 System.out.println(ex.getMessage());
                 return date;
+            }
+        }
+    }
+
+    /** UPLOAD PDF FILE INTO DATABASE */
+    public static void uploadPlanPDF (File PDF, String name) {
+        Connection conn = null;
+        PreparedStatement pst = null;
+
+
+        try {
+            Class.forName(JDBC_DRIVER); //register JDBC driver
+            conn = DriverManager.getConnection(url, DBuser, DBpassword);  //open connection
+            System.out.println("CONNECTION SUCCESSFUL");
+
+
+            FileInputStream fileInput = new FileInputStream(PDF);
+            pst = conn.prepareStatement("INSERT INTO plan (userID, plandata, filename, date) VALUES (" + User.currentUser.getUserID() + ", ?, '" + name + "', now());");
+
+            pst.setBinaryStream(1, fileInput, fileInput.available());
+            pst.executeUpdate();
+
+            pst.close();
+
+
+
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println("CONNECTION FAILED : " + e );
+        } catch (IOException e) {
+            System.out.println("FILE NOT FOUND");
+        }finally {
+            try{
+                if(conn != null) conn.close();
+            } catch(SQLException ex) {
+                System.out.println(ex.getMessage());
             }
         }
     }

@@ -271,6 +271,12 @@ public class ComposerPanel extends JPanel implements ActionListener, FocusListen
                 plan.addMuscle(m.getText());
             }
             plan.setExercises(listmodel.toArray());
+            try {
+                plan.createPDF();
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+
+            }
             planPanel.addPlan(plan);
             detailPanel4.createPlanScore(); // refresh musclescorelabels
             listmodel.removeAllElements(); //refresh exercise list

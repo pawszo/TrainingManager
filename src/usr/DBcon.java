@@ -73,7 +73,7 @@ public class DBcon {
 
             stmt = conn.createStatement();  // create statement
 
-            String sql = "SELECT id FROM user WHERE username = \"" + username + "\" AND password = \"" + password + "\";";
+            String sql = "SELECT id FROM user WHERE username = \"" + username + "\" AND password = md5('" + password + "');";
             ResultSet rs = stmt.executeQuery(sql);
 
             while(rs.next()) {
@@ -111,7 +111,7 @@ public class DBcon {
 
             stmt = conn.createStatement();  // create statement
 
-            String sql = "INSERT INTO user (username, email, sex, password) VALUES ('" + username + "', '" + email + "', '" + sex + "', '" + password + "');";
+            String sql = "INSERT INTO user (username, email, sex, password) VALUES ('" + username + "', '" + email + "', '" + sex + "', md5('" + password + "'));";
             stmt.executeUpdate(sql);
 
             stmt.close();

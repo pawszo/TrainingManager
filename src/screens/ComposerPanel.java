@@ -19,7 +19,7 @@ import java.util.LinkedList;
 public class ComposerPanel extends JPanel implements ActionListener, FocusListener {
 
     private JComboBox bodypartBox, excBox;
-    private JTextField weight, repetitions;
+    private JTextField weight, repetitions, title;
     private int[] ABSexc, ARMexc, BACKexc, SHOULDERexc, LEGexc, BUTTOCKexc, HIPexc, CHESTexc, currMuscle;
     private String[] bodyparts, currBodypartString;
     private String currExc;
@@ -91,8 +91,12 @@ public class ComposerPanel extends JPanel implements ActionListener, FocusListen
         weight.setText("Weight in KGs");
         weight.setToolTipText("Enter weight in KGs here");
         weight.addFocusListener(this);
+        title = new JTextField(20);
+        title.setText("Title");
+        title.setToolTipText("Define a plan name");
+        title.addFocusListener(this);
         repetitions = new JTextField(10);
-        repetitions.setText("Enter total number of repetitions here");
+        repetitions.setText("Total reps per exercise");
         repetitions.setToolTipText("Enter total number of repetitions here");
         repetitions.addFocusListener(this);
         textField1 = new JTextArea("PRIMARY MUSCLES:");
@@ -106,14 +110,15 @@ public class ComposerPanel extends JPanel implements ActionListener, FocusListen
     }
     private void createDetailPanels() {
         detailPanel1 = new DetailPanel(new Color(144, 200, 159));
-        detailPanel1.setLayout(new GridLayout(10, 1));
-        detailPanel1.add(new JLabel("User the dropdown to select preferred exercise"));
+        detailPanel1.setLayout(new GridLayout(6, 1));
         detailPanel1.add(bodypartBox);
         detailPanel1.add(excBox);
         detailPanel1.add(new JLabel("Enter weight: "));
         detailPanel1.add(weight);
         detailPanel1.add(new JLabel("Enter repetitions: "));
         detailPanel1.add(repetitions);
+        detailPanel1.add(new JLabel("Define title"));
+        detailPanel1.add(title);
         detailPanel1.add(addToList);
         detailPanel1.add(removeFromList);
         detailPanel1.add(save);
